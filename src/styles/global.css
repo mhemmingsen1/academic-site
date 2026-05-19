@@ -568,87 +568,45 @@ hr {
 }
 
 .course {
-  padding: 0;
+  padding: 0.5rem 0;
   border-bottom: 1px solid var(--rule);
+  line-height: 1.5;
 }
 
-.course details summary,
-.course-static {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 1rem;
-  padding: 0.6rem 0;
-  cursor: pointer;
-  list-style: none;
-  position: relative;
-}
-
-.course-static {
-  cursor: default;
-}
-
-.course details summary::-webkit-details-marker {
-  display: none;
-}
-
-.course details summary::before {
-  content: "▸";
-  color: var(--rule);
-  margin-right: 0.6rem;
-  font-size: 0.75rem;
-  display: inline-block;
-  transition: transform 150ms ease;
-}
-
-.course details[open] summary::before {
-  content: "▾";
-}
-
-.course-static::before {
-  content: "";
-  display: inline-block;
-  margin-right: 0.6rem;
-  width: 0.75rem;
+.course:last-child {
+  border-bottom: none;
 }
 
 .course-title {
-  font-family: var(--serif-display);
-  font-size: 1.05rem;
-  font-style: italic;
-  line-height: 1.3;
-  flex: 1;
+  font-family: var(--serif-body);
+  font-size: 1rem;
+  color: var(--ink);
+  font-weight: 500;
 }
 
-.course details summary:hover .course-title {
-  color: var(--accent);
+a.course-title {
+  border-bottom: 1px solid transparent;
 }
 
-.course details summary:hover::before {
-  color: var(--accent);
-}
-
-.course-syllabus {
-  font-size: 0.8125rem;
-  font-variant: small-caps;
-  letter-spacing: 0.05em;
-  color: var(--ink-soft);
-  border-bottom: 1px solid var(--rule);
-  flex-shrink: 0;
-}
-
-.course-syllabus:hover {
+a.course-title:hover {
   color: var(--accent);
   border-bottom-color: var(--accent);
 }
 
 .course-desc {
   font-size: 0.9375rem;
-  color: var(--ink);
-  margin: 0 0 0.75rem 1.35rem;
-  line-height: 1.55;
+  color: var(--ink-soft);
 }
 
+.talk-invited {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-variant: small-caps;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  margin-left: 0.6rem;
+  vertical-align: middle;
+}
 /* ---------- Responsive ---------- */
 
 @media (max-width: 600px) {
