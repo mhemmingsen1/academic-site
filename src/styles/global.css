@@ -1,0 +1,682 @@
+/* ----------------------------------------------------------------------------
+   Editorial / scholarly aesthetic.
+   - Warm off-white background, deep ink text.
+   - Single accent: a muted oxblood for links and emphasis.
+   - EB Garamond for display headings (italic by default for that essayistic feel).
+   - Source Serif 4 for body — humanist, sturdy, reads well at long lengths.
+   - Generous measure (~65ch), wide line-height, no needless flourish.
+   ------------------------------------------------------------------------- */
+
+:root {
+  /* Palette */
+  --bg:        #faf7f2;          /* warm paper */
+  --bg-tint:   #f3ede2;          /* slightly darker for filter chips, etc. */
+  --ink:       #1a1814;          /* near-black, warm */
+  --ink-soft:  #5a544a;          /* muted body for metadata */
+  --rule:      #d8cfbf;          /* hairline rules */
+  --accent:    #7a1f1f;          /* muted oxblood — links, emphasis */
+  --accent-soft: #a85050;
+
+  /* Typography */
+  --serif-display: 'EB Garamond', 'Hoefler Text', Georgia, serif;
+  --serif-body:    'Source Serif 4', 'EB Garamond', Georgia, serif;
+
+  /* Layout */
+  --measure: 38rem;              /* ~60–65ch */
+  --measure-wide: 52rem;
+  --pad: clamp(1.25rem, 3vw, 2rem);
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--serif-body);
+  font-size: 1.0625rem;          /* ~17px */
+  line-height: 1.65;
+  font-feature-settings: "kern", "liga", "onum";
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Subtle paper texture — keeps the background from feeling flat, but is
+   light enough to be deniable. Two stacked radial-gradient noises. */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(139, 119, 89, 0.025) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(139, 119, 89, 0.025) 0%, transparent 50%);
+}
+
+main, header, footer {
+  position: relative;
+  z-index: 1;
+}
+
+/* ---------- Layout container ---------- */
+
+.container {
+    padding: 2.5rem var(--pad) 3rem;
+}
+
+.page-frame {
+  max-width: var(--measure-wide);
+  margin: 0 auto;
+  border-left: 1px solid var(--rule);
+  border-right: 1px solid var(--rule);
+  min-height: 100vh;
+}
+
+.measure {
+  max-width: var(--measure);
+}
+
+/* ---------- Site header / nav ---------- */
+
+.site-header {
+    padding: 2.5rem var(--pad) 1.25rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.site-header-inner {
+  max-width: var(--measure-wide);
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.site-title {
+  font-family: var(--serif-display);
+  font-size: 1.5rem;
+  font-style: italic;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  margin: 0;
+}
+
+.site-title a {
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.site-title a:hover {
+  color: var(--accent);
+}
+
+nav.site-nav {
+  display: flex;
+  gap: 1.75rem;
+  font-family: var(--serif-body);
+  font-size: 0.9375rem;
+  font-variant: small-caps;
+  letter-spacing: 0.05em;
+}
+
+nav.site-nav a {
+  color: var(--ink-soft);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 2px;
+  transition: color 120ms ease, border-color 120ms ease;
+}
+
+nav.site-nav a:hover,
+nav.site-nav a[aria-current="page"] {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+/* ---------- Headings ---------- */
+
+h1, h2, h3 {
+  font-family: var(--serif-display);
+  font-weight: 500;
+  color: var(--ink);
+  margin: 0 0 0.5rem;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: clamp(2rem, 5vw, 2.75rem);
+  font-style: italic;
+  letter-spacing: -0.01em;
+}
+
+h2 {
+  font-size: 1.5rem;
+  font-style: italic;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+h3 {
+  font-size: 1.15rem;
+  font-style: italic;
+  margin-top: 1.5rem;
+}
+
+.lede {
+  font-family: var(--serif-display);
+  font-style: italic;
+  font-size: 1.2rem;
+  color: var(--ink-soft);
+  margin: 0.25rem 0 2.5rem;
+}
+
+/* ---------- Body content ---------- */
+
+p { margin: 0 0 1rem; }
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(122, 31, 31, 0.3);
+  transition: border-color 120ms ease, color 120ms ease;
+}
+
+a:hover {
+  border-bottom-color: var(--accent);
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--rule);
+  margin: 2.5rem 0;
+}
+
+/* ---------- Lists for publications, courses, etc. ---------- */
+
+.entries {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.entry {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+.entry:last-child { border-bottom: 0; }
+
+.entry-title {
+  font-family: var(--serif-display);
+  font-size: 1.15rem;
+  font-style: italic;
+  margin: 0 0 0.15rem;
+  line-height: 1.25;
+}
+
+.entry-title a {
+  color: var(--ink);
+  border-bottom: 1px solid transparent;
+}
+
+.entry-title a:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+.entry-meta {
+  font-size: 0.9375rem;
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+.entry-desc {
+  font-size: 0.9375rem;
+  color: var(--ink);
+  margin: 0.5rem 0 0;
+}
+
+.entry-note {
+  font-size: 0.875rem;
+  color: var(--ink-soft);
+  font-style: italic;
+  margin: 0.5rem 0 0;
+  padding-left: 0.85rem;
+  border-left: 2px solid var(--rule);
+  line-height: 1.55;
+}
+
+.entry-note a {
+  color: var(--ink-soft);
+  border-bottom-color: rgba(90, 84, 74, 0.4);
+}
+
+.entry-note a:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+.entry-tags {
+  margin-top: 0.5rem;
+  font-size: 0.8125rem;
+  color: var(--ink-soft);
+  font-variant: small-caps;
+  letter-spacing: 0.05em;
+}
+
+.entry-tags span {
+  margin-right: 0.75rem;
+}
+
+.entry-status {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-variant: small-caps;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  border: 1px solid var(--accent-soft);
+  padding: 0.1rem 0.5rem;
+  margin-left: 0.5rem;
+  border-radius: 2px;
+  vertical-align: middle;
+}
+
+/* ---------- Tag filter bar ---------- */
+
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1.5rem 0 1rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.filter-label {
+  font-size: 0.8125rem;
+  font-variant: small-caps;
+  letter-spacing: 0.08em;
+  color: var(--ink-soft);
+  margin-right: 0.5rem;
+  align-self: center;
+}
+
+.filter-chip {
+  font-family: var(--serif-body);
+  font-size: 0.875rem;
+  color: var(--ink-soft);
+  background: transparent;
+  border: 1px solid var(--rule);
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 120ms ease;
+}
+
+.filter-chip:hover {
+  border-color: var(--accent-soft);
+  color: var(--accent);
+}
+
+.filter-chip[aria-pressed="true"] {
+  background: var(--ink);
+  color: var(--bg);
+  border-color: var(--ink);
+}
+
+/* ---------- Home page specifics ---------- */
+
+.home-hero {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 2rem;
+  align-items: start;
+  margin-bottom: 2.5rem;
+}
+
+.home-hero-text {
+  min-width: 0;
+}
+
+.home-photo {
+  width: 9rem;
+  height: 12rem;          /* 3:4 portrait */
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 2px;
+  box-shadow: 0 1px 3px rgba(26, 24, 20, 0.08), 0 6px 16px rgba(26, 24, 20, 0.06);
+  outline: 1px solid var(--rule);
+  outline-offset: -1px;
+  display: block;
+}
+
+.home-involvements {
+  margin-top: 1rem;
+  font-family: var(--serif-display);
+  font-style: italic;
+  font-size: 1.15rem;
+  line-height: 1.4;
+}
+
+.home-involvements a {
+  color: var(--accent);
+  border-bottom: none;
+  transition: color 120ms ease;
+}
+
+.home-involvements a:hover {
+  color: var(--ink);
+}
+
+.home-involvements .sep {
+  color: var(--rule);
+  margin: 0 0.6rem;
+}
+.home-section {
+  margin-bottom: 2.5rem;
+}
+
+.home-section h2 {
+  font-size: 1.05rem;
+  font-style: normal;
+  font-variant: small-caps;
+  letter-spacing: 0.1em;
+  color: var(--ink-soft);
+  margin-bottom: 0.75rem;
+  margin-top: 0;
+  font-family: var(--serif-body);
+  font-weight: 500;
+}
+
+.home-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.home-list li {
+  margin-bottom: 0.4rem;
+}
+
+.home-elsewhere {
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--rule);
+  font-family: var(--serif-body);
+  font-size: 0.9375rem;
+  color: var(--ink-soft);
+  line-height: 1.8;
+}
+
+.home-elsewhere a {
+  color: var(--accent);
+  border-bottom: 1px solid rgba(122, 31, 31, 0.3);
+}
+
+.home-elsewhere a:hover {
+  border-bottom-color: var(--accent);
+}
+
+.home-elsewhere .sep {
+  color: var(--rule);
+  margin: 0 0.6rem;
+}
+
+.contact-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.contact-list li {
+  margin-bottom: 0.5rem;
+}
+
+.contact-list .label {
+  display: inline-block;
+  width: 6rem;
+  color: var(--ink-soft);
+  font-variant: small-caps;
+  font-size: 0.8125rem;
+  letter-spacing: 0.06em;
+}
+
+/* ---------- Footer ---------- */
+
+.site-footer {
+  padding: 2rem var(--pad);
+  border-top: 1px solid var(--rule);
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--ink-soft);
+  font-style: italic;
+}
+
+.chapter-list {
+  list-style: none;
+  margin: 0.5rem 0 0;
+  padding-left: 1.25rem;
+  border-left: 1px solid var(--rule);
+}
+
+.chapter-list li {
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  padding: 0.15rem 0;
+}
+
+.chapter-list a {
+  color: var(--ink);
+  border-bottom: 1px solid transparent;
+}
+
+.chapter-list a:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+.chapter-coauthors {
+  color: var(--ink-soft);
+  font-style: italic;
+}
+
+.pub-years {
+  margin-top: 1rem;
+}
+
+.pub-year-group {
+  display: grid;
+  grid-template-columns: 5rem 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+.pub-year-group + .pub-year-group {
+  margin-top: 1.5rem;
+}
+
+.pub-year-label {
+  font-family: var(--serif-display);
+  font-style: italic;
+  font-size: 1.4rem;
+  color: var(--ink);
+  padding-top: 1.25rem;
+}
+
+.chapter-disclosure {
+  margin-top: 0.5rem;
+}
+
+.chapter-disclosure summary {
+  cursor: pointer;
+  font-size: 0.875rem;
+  color: var(--ink-soft);
+  font-style: italic;
+  list-style: none;
+  padding: 0.15rem 0;
+  display: inline-block;
+}
+
+.chapter-disclosure summary::-webkit-details-marker {
+  display: none;
+}
+
+.chapter-disclosure summary::before {
+  content: "▸ ";
+  color: var(--rule);
+  display: inline-block;
+  margin-right: 0.25rem;
+  transition: transform 150ms ease;
+}
+
+.chapter-disclosure[open] summary::before {
+  content: "▾ ";
+}
+
+.chapter-disclosure summary:hover {
+  color: var(--accent);
+}
+
+.chapter-disclosure summary:hover::before {
+  color: var(--accent);
+}
+
+.chapter-disclosure .chapter-list {
+  margin-top: 0.5rem;
+}
+
+.pedagogy-section {
+  margin-bottom: 3rem;
+}
+
+.courses-section h2 {
+  font-family: var(--serif-display);
+  font-size: 1.5rem;
+  font-style: italic;
+  font-weight: 500;
+  margin: 0 0 1rem;
+}
+
+.course-list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0;
+}
+
+.course {
+  padding: 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+.course details summary,
+.course-static {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.6rem 0;
+  cursor: pointer;
+  list-style: none;
+  position: relative;
+}
+
+.course-static {
+  cursor: default;
+}
+
+.course details summary::-webkit-details-marker {
+  display: none;
+}
+
+.course details summary::before {
+  content: "▸";
+  color: var(--rule);
+  margin-right: 0.6rem;
+  font-size: 0.75rem;
+  display: inline-block;
+  transition: transform 150ms ease;
+}
+
+.course details[open] summary::before {
+  content: "▾";
+}
+
+.course-static::before {
+  content: "";
+  display: inline-block;
+  margin-right: 0.6rem;
+  width: 0.75rem;
+}
+
+.course-title {
+  font-family: var(--serif-display);
+  font-size: 1.05rem;
+  font-style: italic;
+  line-height: 1.3;
+  flex: 1;
+}
+
+.course details summary:hover .course-title {
+  color: var(--accent);
+}
+
+.course details summary:hover::before {
+  color: var(--accent);
+}
+
+.course-syllabus {
+  font-size: 0.8125rem;
+  font-variant: small-caps;
+  letter-spacing: 0.05em;
+  color: var(--ink-soft);
+  border-bottom: 1px solid var(--rule);
+  flex-shrink: 0;
+}
+
+.course-syllabus:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+.course-desc {
+  font-size: 0.9375rem;
+  color: var(--ink);
+  margin: 0 0 0.75rem 1.35rem;
+  line-height: 1.55;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 600px) {
+  .site-header { padding-top: 1.5rem; margin-bottom: 2rem; }
+  .site-header-inner { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+  nav.site-nav { gap: 1.25rem; flex-wrap: wrap; }
+  .contact-list .label { width: 5rem; }
+
+  .home-hero {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  .home-photo {
+    width: 7rem;
+    height: 9.25rem;
+  }
+
+  .pub-year-group {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .pub-year-label {
+    padding-top: 1.5rem;
+    margin-bottom: 0.25rem;
+  }
+  .pub-year-group + .pub-year-group {
+    margin-top: 0.5rem;
+  }
+
+  .course-list { columns: 1; }
+}

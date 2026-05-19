@@ -1,0 +1,36 @@
+---
+import Base from '../layouts/Base.astro';
+import { grants } from '../data/grants';
+
+function fmtDate(d: string) {
+  // Expect "YYYY-MM" — turn into "Aug 2024"
+  const [y, m] = d.split('-');
+  const months = ['', 'Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  return `${months[parseInt(m, 10)] || ''} ${y}`.trim();
+}
+
+// Sort by start date, most recent first
+const sorted = [...grants].sort((a, b) => b.startDate.localeCompare(a.startDate));
+---
+
+<Base title="Grants" current="grants" description="Active and past research grants.">
+  <div class="measure">
+    <h1>Grants</h1>
+    <p class="lede">Research funding, active and past.</p>
+
+    <ul class="entries">
+      {sorted.map((g) => (
+        <li class="entry">
+          <p class="entry-title">
+            {g.link ? <a href={g.link} target="_blank" rel="noopener">{g.title}</a> : g.title}
+          </p>
+          <p class="entry-meta">
+            {g.funder} — {g.role}, {fmtDate(g.startDate)}&ndash;{fmtDate(g.endDate)}
+            {g.amount && <> · {g.amount}</>}
+          </p>
+          <p class="entry-desc">{g.description}</p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</Base>
