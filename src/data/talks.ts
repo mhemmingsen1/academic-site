@@ -38,7 +38,7 @@ export const talks: Talk[] = [
   },
   {
     title: 'Ecological Curation and Moral Cost: The Nature We Like',
-    venue: 'Green Marble 2025: International Meeting on Anthropocene Studies and Ecocriticism, University of Porto',
+    venue: 'Green Marble 2025, University of Porto',
     year: 2025,
     date: 'September',
     tags: ['Environmental Philosophy']

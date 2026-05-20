@@ -12,13 +12,21 @@ export type Grant = {
 export const grants: Grant[] = [
   // --- EXAMPLES — replace with your own ---
   {
-    title: 'Cross-Cultural Experimental Philosophy of Sport',
+    title: 'Sport Across Cultures: Mapping Cross-Cultural Criteria',
     funder: 'National Science and Technology Council (NSTC), Taiwan',
     role: 'Principal Investigator',
-    startDate: '2024-08',
-    endDate: '2026-07',
+    startDate: '2025-08',
+    endDate: '2027-07',
     description:
       'A two-phase experimental philosophy project investigating how sport-likeness judgements vary across linguistic and cultural contexts. Phase 1 analysed vignette responses across five languages (English, German, Polish, Mandarin, Japanese); Phase 2 deploys a randomised conditional-vignette instrument via LimeSurvey and Prolific Academic.',
   },
-  // ... add more here
+  // {
+  //   title: 'Understanding the Concept of Sport: A Core-Periphery Model',
+  //   funder: 'National Science and Technology Council (NSTC), Taiwan',
+  //   role: 'Principal Investigator',
+  //   startDate: '2024-08',
+  //   endDate: '2025-07',
+  //   description:
+  //     'A two-phase experimental philosophy project investigating how sport-likeness judgements vary across linguistic and cultural contexts. Phase 1 analysed vignette responses across five languages (English, German, Polish, Mandarin, Japanese); Phase 2 deploys a randomised conditional-vignette instrument via LimeSurvey and Prolific Academic.',
+  // },
 ];
