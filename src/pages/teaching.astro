@@ -5,26 +5,29 @@ import { courses, pedagogy } from '../data/teaching';
 const allTags = Array.from(new Set(courses.flatMap((c) => c.tags ?? []))).sort();
 ---
 
-<Base title="Teaching" current="teaching" description="Courses taught and pedagogical innovations.">
+<Base title="Pedagogy & Assignments" current="teaching" description="Courses taught and pedagogical innovations.">
   <div>
-    <h1>Teaching</h1>
+    <h1>Pedagogy & Assignments</h1>
 
     {pedagogy.length > 0 && (
-      <section class="pedagogy-section">
-        <ul class="entries">
-          {pedagogy.map((p) => (
-            <li class="entry">
-              <p class="entry-title">
-                {p.link
-                  ? <a href={p.link} target="_blank" rel="noopener">{p.title}</a>
-                  : <span>{p.title}</span>}
-              </p>
-              <p class="entry-meta">{p.description}</p>
-            </li>
-          ))}
-        </ul>
-      </section>
-    )}
+  <section class="pedagogy-section">
+    <ul class="entries">
+      {pedagogy.map((p) => (
+        <li class="entry">
+          <details class="pedagogy-disclosure">
+            <summary>
+              <span class="pedagogy-title">{p.title}</span>
+            </summary>
+            <p class="pedagogy-desc" set:html={p.description}></p>
+          </details>
+          {p.link && (
+            <a class="pedagogy-link" href={p.link} target="_blank" rel="noopener">PDF</a>
+          )}
+        </li>
+      ))}
+    </ul>
+  </section>
+)}
 
     <section class="courses-section">
       <h2>Courses</h2>

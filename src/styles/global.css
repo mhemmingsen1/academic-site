@@ -553,6 +553,78 @@ hr {
   margin-bottom: 3rem;
 }
 
+.pedagogy-section .entry {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.6rem 0;
+}
+
+.pedagogy-disclosure {
+  flex: 1;
+  min-width: 0;
+}
+
+.pedagogy-disclosure summary {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: baseline;
+}
+
+.pedagogy-disclosure summary::-webkit-details-marker {
+  display: none;
+}
+
+.pedagogy-disclosure summary::before {
+  content: "▸";
+  color: var(--rule);
+  margin-right: 0.6rem;
+  font-size: 0.75rem;
+  flex-shrink: 0;
+}
+
+.pedagogy-disclosure[open] summary::before {
+  content: "▾";
+}
+
+.pedagogy-title {
+  font-family: var(--serif-body); font-style: normal; font-weight: 500;
+  font-size: 1.15rem;
+  font-style: italic;
+  line-height: 1.3;
+}
+
+.pedagogy-disclosure summary:hover .pedagogy-title {
+  color: var(--accent);
+}
+
+.pedagogy-disclosure summary:hover::before {
+  color: var(--accent);
+}
+
+.pedagogy-desc {
+  font-size: 0.9375rem;
+  color: var(--ink);
+  margin: 0.5rem 0 0 1.35rem;
+  line-height: 1.6;
+}
+
+.pedagogy-link {
+  font-size: 0.8125rem;
+  font-variant: small-caps;
+  letter-spacing: 0.05em;
+  color: var(--ink-soft);
+  border-bottom: 1px solid var(--rule);
+  flex-shrink: 0;
+}
+
+.pedagogy-link:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
 .courses-section h2 {
   font-family: var(--serif-display);
   font-size: 1.5rem;
