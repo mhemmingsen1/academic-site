@@ -20,7 +20,7 @@ import { defineConfig } from 'astro/config';
 //      base:  '/'
 
 export default defineConfig({
-  site: 'https://mhemmingsen1.github.io',
-base: '/academic-site',
+  site: 'https://michaelhemmingsen.com',
+base: '/',
   trailingSlash: 'ignore',
 });
