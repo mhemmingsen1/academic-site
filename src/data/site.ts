@@ -3,15 +3,13 @@
 
 export const site = {
   name: 'Michael Hemmingsen',
-  role: 'Associate Professor',
-affiliation: 'International College, Tunghai University',
+  role: 'Associate Professor of Philosophy',
+affiliation: 'International College & Tunghai Honors Program, Tunghai University',
 location: 'Taichung, Taiwan',
 
 // One or two short lines describing what you do, shown in the Position
 // section on the home page below the formal title.
 positionDescription: [
-  'Philosopher working in the International College at Tunghai University,',
-  'and in the Tunghai Honors Program.',
 ],
 
   // Education — listed most-recent first on the home page.
