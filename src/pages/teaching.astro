@@ -5,32 +5,32 @@ import { courses, pedagogy } from '../data/teaching';
 const allTags = Array.from(new Set(courses.flatMap((c) => c.tags ?? []))).sort();
 ---
 
-<Base title="Pedagogy & Assignments" current="teaching" description="Courses taught and pedagogical innovations.">
+<Base title="Teaching" current="teaching" description="Courses taught and pedagogical innovations.">
   <div>
-    <h1>Pedagogy & Assignments</h1>
-
     {pedagogy.length > 0 && (
-  <section class="pedagogy-section">
-    <ul class="entries">
-      {pedagogy.map((p) => (
-        <li class="entry">
-          <details class="pedagogy-disclosure">
-            <summary>
-              <span class="pedagogy-title">{p.title}</span>
-            </summary>
-            <p class="pedagogy-desc" set:html={p.description}></p>
-          </details>
-          {p.link && (
-            <a class="pedagogy-link" href={p.link} target="_blank" rel="noopener">PDF</a>
-          )}
-        </li>
-      ))}
-    </ul>
-  </section>
-)}
+      <section class="pedagogy-section">
+        <h2>Pedagogy &amp; Assignments</h2>
+        <ul class="entries">
+          {pedagogy.map((p) => (
+            <li class="entry">
+              <details class="pedagogy-disclosure">
+                <summary>
+                  <span class="pedagogy-title">{p.title}</span>
+                </summary>
+                <p class="pedagogy-desc" set:html={p.description}></p>
+              </details>
+              {p.link && (
+                <a class="pedagogy-link" href={p.link} target="_blank" rel="noopener">PDF</a>
+              )}
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
 
     <section class="courses-section">
       <h2>Courses</h2>
+      <p class="courses-note">Syllabi available on request.</p>
 
       {allTags.length > 0 && (
         <div class="filter-bar" role="group" aria-label="Filter courses by topic">
@@ -43,15 +43,15 @@ const allTags = Array.from(new Set(courses.flatMap((c) => c.tags ?? []))).sort()
       )}
 
       <ul class="course-list" id="course-list">
-  {courses.map((c) => (
-    <li class="course" data-tags={(c.tags ?? []).join('|')}>
-      {c.syllabus
-        ? <a class="course-title" href={c.syllabus} target="_blank" rel="noopener">{c.title}</a>
-        : <span class="course-title">{c.title}</span>}
-      {c.description && <> — <span class="course-desc">{c.description}</span></>}
-    </li>
-  ))}
-</ul>
+        {courses.map((c) => (
+          <li class="course" data-tags={(c.tags ?? []).join('|')}>
+            {c.syllabus
+              ? <a class="course-title" href={c.syllabus} target="_blank" rel="noopener">{c.title}</a>
+              : <span class="course-title">{c.title}</span>}
+            {c.description && <> — <span class="course-desc">{c.description}</span></>}
+          </li>
+        ))}
+      </ul>
 
       <p id="course-empty" style="display:none; color: var(--ink-soft); font-style: italic; margin-top: 2rem;">
         No courses match this topic.

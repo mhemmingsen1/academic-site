@@ -14,9 +14,9 @@ const sorted = [...grants].sort((a, b) => b.startDate.localeCompare(a.startDate)
 ---
 
 <Base title="Grants" current="grants" description="Active and past research grants.">
-  <div class="measure">
+  <div>
     <h1>Grants</h1>
-    <p class="lede">Research funding, active and past.</p>
+ 
 
     <ul class="entries">
       {sorted.map((g) => (
