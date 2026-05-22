@@ -18,7 +18,7 @@ export const grants: Grant[] = [
     startDate: '2025-08',
     endDate: '2027-07',
     description:
-      'Building on the core-periphery model, using experimental philosophy, this project examines how different cultures understand and classify sport. Through large-scale cross-cultural surveys, it investigates how different linguistic communities weigh factors such as physical skill, strategy, competition, aesthetics, and institutional structure when deciding whether an activity counts as a sport. The project explores not only sport itself, but also the broader philosophical question of how concepts vary across cultures and how those differences can be studied systematically.',
+      'Building on the core-periphery model, this project examines how different cultures understand and classify sport. Through large-scale cross-cultural surveys, it investigates how different linguistic communities weigh factors such as physical skill, strategy, competition, aesthetics, and institutional structure when deciding whether an activity counts as a sport. The project explores not only sport itself, but also the broader philosophical question of how concepts vary across cultures and how those differences can be studied systematically.',
   },
    {
     title: 'Understanding the Concept of Sport: A Core-Periphery Model',
