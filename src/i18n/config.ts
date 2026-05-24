@@ -2,7 +2,7 @@
 // To add a language later (e.g. Japanese), add its code here and add the
 // matching keys throughout the data/UI files. Nothing else structural changes.
 
-export const languages = ['en', 'zh'] as const;
+export const languages = ['en', 'zh', 'ja'] as const;
 
 export type Lang = (typeof languages)[number];
 
@@ -12,7 +12,7 @@ export const defaultLang: Lang = 'en';
 export const langNames: Record<Lang, string> = {
   en: 'English',
   zh: '繁體中文',
-  // ja: '日本語',   // ← uncomment when adding Japanese
+  ja: '日本語',
 };
 
 // URL prefix for each language. The default language lives at the root

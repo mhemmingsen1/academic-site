@@ -9,19 +9,19 @@ import type { Translatable } from './t';
 import type { Lang } from './config';
 
 export const tagLabels = {
-  ethics:        { en: 'Ethics',                            zh: '倫理學' },
-  philtech:      { en: 'Philosophy of Technology',          zh: '科技哲學' },
-  sportgames:    { en: 'Philosophy of Sport & Games',       zh: '運動與遊戲哲學' },
-  religion:      { en: 'Philosophy of Religion',            zh: '宗教哲學' },
-  nonwestern:    { en: 'Non-Western & Comparative Philosophy', zh: '非西方哲學與比較哲學' },
-  sociopolitical:{ en: 'Social & Political Philosophy',     zh: '社會與政治哲學' },
-  environmental: { en: 'Environmental Philosophy',          zh: '環境哲學' },
-  freewill:      { en: 'Free Will',                        zh: '自由意志' },
-  gened:         { en: 'General Education',                           zh: '通識教育' },
-  honors:        { en: 'Honors',                                      zh: '榮譽教育' },
-  political:     { en: 'Political Philosophy & International Relations', zh: '政治哲學與國際關係' },
-  ai:            { en: 'Artificial Intelligence',                     zh: '人工智慧' },
-  media:         { en: 'Media Theory',                                zh: '媒介理論' },
+  ethics:        { en: 'Ethics',                            zh: '倫理學',                 ja: '倫理学' },
+  philtech:      { en: 'Philosophy of Technology',          zh: '科技哲學',               ja: '科学技術哲学' },
+  sportgames:    { en: 'Philosophy of Sport & Games',       zh: '運動與遊戲哲學',         ja: 'スポーツとゲームの哲学' },
+  religion:      { en: 'Philosophy of Religion',            zh: '宗教哲學',               ja: '宗教学' },
+  nonwestern:    { en: 'Non-Western & Comparative Philosophy', zh: '非西方哲學與比較哲學', ja: '非西洋哲学と比較哲学' },
+  sociopolitical:{ en: 'Social & Political Philosophy',     zh: '社會與政治哲學',         ja: '社会・政治哲学' },
+  environmental: { en: 'Environmental Philosophy',          zh: '環境哲學',               ja: '環境哲学' },
+  freewill:      { en: 'Free Will',                         zh: '自由意志',               ja: '自由意志' },
+  gened:         { en: 'General Education',                 zh: '通識教育',               ja: '教養教育' },
+  honors:        { en: 'Honors',                            zh: '榮譽教育',               ja: 'オナーズ教育' },
+  political:     { en: 'Political Philosophy & International Relations', zh: '政治哲學與國際關係', ja: '政治哲学と国際関係論' },
+  ai:            { en: 'Artificial Intelligence',           zh: '人工智慧',               ja: '人工知能' },
+  media:         { en: 'Media Theory',                      zh: '媒介理論',               ja: 'メディア理論' },
 } satisfies Record<string, Translatable>;
 
 export type TagKey = keyof typeof tagLabels;

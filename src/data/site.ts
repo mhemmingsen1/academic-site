@@ -31,15 +31,16 @@ export const site = {
   nameLocal: {
     en: '',                       // English page shows English name only
     zh: '海明森邁克',
-    // ja: 'ヘミングセンマイケル',  // ← add with Japanese
+    ja: 'ヘミングセン・マイケル',
   } as Record<Lang, string>,
 
-  role: { en: 'Associate Professor of Philosophy', zh: '哲學副教授' } as Translatable,
+  role: { en: 'Associate Professor of Philosophy', zh: '哲學副教授' , ja: '哲学准教授'} as Translatable,
   affiliation: {
     en: 'International College & Tunghai Honors Program, Tunghai University',
     zh: '東海大學國際學院暨東海榮譽學程',
+    ja: '東海大学インターナショナルカレッジ・東海オナーズプログラム',
   } as Translatable,
-  location: { en: 'Taichung, Taiwan', zh: '臺中，臺灣' } as Translatable,
+  location: { en: 'Taichung, Taiwan', zh: '臺中，臺灣', ja: '台湾・台中' } as Translatable,
 
   // One or two short lines shown in the Position section on the home page.
   // Each line is its own translatable object. Empty array = nothing shown.
@@ -47,9 +48,9 @@ export const site = {
 
   // Education — listed most-recent first on the home page.
   education: [
-    { degree: { en: 'Ph.D., Philosophy', zh: '哲學博士' }, institution: { en: 'McMaster University', zh: '麥馬士達大學' } },
-    { degree: { en: 'M.A., Philosophy', zh: '哲學碩士' }, institution: { en: 'Victoria University of Wellington', zh: '威靈頓維多利亞大學' } },
-    { degree: { en: 'Master of International Relations', zh: '國際關係碩士' }, institution: { en: 'Victoria University of Wellington', zh: '威靈頓維多利亞大學' } },
+    { degree: { en: 'Ph.D., Philosophy', zh: '哲學博士', ja: '哲学博士'}, institution: { en: 'McMaster University', zh: '麥馬士達大學', ja: 'マクマスター大学' } },
+    { degree: { en: 'M.A., Philosophy', zh: '哲學碩士', ja: '哲学修士' }, institution: { en: 'Victoria University of Wellington', zh: '威靈頓維多利亞大學', ja: 'ウェリントン・ビクトリア大学' } },
+    { degree: { en: 'Master of International Relations', zh: '國際關係碩士', ja: '国際関係学修士' }, institution: { en: 'Victoria University of Wellington', zh: '威靈頓維多利亞大學', ja: 'ウェリントン・ビクトリア大学' } },
   ] as Edu[],
 
   // Contact / external profiles — not translated.
@@ -63,8 +64,8 @@ export const site = {
 
   // Involvements: the label is translatable, the URL is not.
   involvements: [
-    { label: { en: 'Tunghai Honors Program', zh: '東海大學榮譽學程' }, url: 'https://honors.thu.edu.tw/' },
-    { label: { en: 'ICIC 2026', zh: 'ICIC 2026' }, url: 'https://icic.thu.edu.tw/' },
+    { label: { en: 'Tunghai Honors Program', zh: '東海大學榮譽學程', ja: '東海オナーズプログラム' }, url: 'https://honors.thu.edu.tw/' },
+    { label: { en: 'ICIC 2026', zh: 'ICIC 2026' }, url: 'https://icic.thu.edu.tw/', ja: 'ICIC 2026' },
   ] as Involvement[],
 
   // Photo — not translated.

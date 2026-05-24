@@ -52,6 +52,7 @@ export const publications: Publication[] = [
     note: {
       en: '<a href="https://www.researchgate.net/publication/395972926_Unity_and_Multiplicity_The_Metaphysics_and_Ethics_of_Benedict_de_Spinoza_Zhang_Zai_and_Chan_Buddhism">English version</a>.',
       zh: '<a href="https://www.researchgate.net/publication/395972926_Unity_and_Multiplicity_The_Metaphysics_and_Ethics_of_Benedict_de_Spinoza_Zhang_Zai_and_Chan_Buddhism">英文版</a>。',
+      ja: '<a href="https://www.researchgate.net/publication/395972926_Unity_and_Multiplicity_The_Metaphysics_and_Ethics_of_Benedict_de_Spinoza_Zhang_Zai_and_Chan_Buddhism">英語版</a>。',
     },
   },
 
@@ -73,6 +74,7 @@ export const publications: Publication[] = [
     note: {
       en: 'For a paper that pushes back on some elements of my view, see <a href="https://philpapers.org/rec/YEEGDS">Gamer’s de se imaginative resistance</a>, by Damin Yee.',
       zh: '如欲閱讀一篇對我部分觀點提出批評的論文，可參見 Damin Yee 的 <a href="https://philpapers.org/rec/YEEGDS">Gamer’s de se imaginative resistance</a>。',
+      ja: '私の見解の一部に異議を唱える論文として、Damin Yee による <a href="https://philpapers.org/rec/YEEGDS">Gamer’s de se imaginative resistance</a> を参照。',
     },
   },
   {
@@ -84,6 +86,7 @@ export const publications: Publication[] = [
     note: {
       en: 'For an application and extension of the core-periphery model, see <a href="https://www.tandfonline.com/doi/full/10.1080/00948705.2026.2652331">A core–periphery framework to evaluate dangerous actions in sport</a>, by Emily Ryall & Alistair Brown.',
       zh: '如欲閱讀一篇將核心–外圍模型加以應用與延伸的論文，可參見 Emily Ryall 與 Alistair Brown 的 <a href="https://www.tandfonline.com/doi/full/10.1080/00948705.2026.2652331">A core–periphery framework to evaluate dangerous actions in sport</a>。',
+      ja: '中心‐周辺モデルの応用と発展については、Emily Ryall と Alistair Brown による <a href="https://www.tandfonline.com/doi/full/10.1080/00948705.2026.2652331">A core–periphery framework to evaluate dangerous actions in sport</a> を参照。',
     },
   },
   {
@@ -102,6 +105,7 @@ export const publications: Publication[] = [
     note: {
       en: 'For a paper taking my Zhuangzi/Althusser comparison in another direction, see <a href="https://journals.sagepub.com/doi/abs/10.1177/01914537251391450">Breaking the Self</a>, by Kanghun Ahn.',
       zh: '如欲閱讀一篇從不同方向發展我對莊子與阿圖塞比較的論文，可參見 Kanghun Ahn 的 <a href="https://journals.sagepub.com/doi/abs/10.1177/01914537251391450">Breaking the Self</a>。',
+      ja: '私の庄子／アルチュセール比較を別の方向性へ発展させた論文として、Kanghun Ahn による <a href="https://journals.sagepub.com/doi/abs/10.1177/01914537251391450">Breaking the Self</a> を参照。',
     },
   },
 

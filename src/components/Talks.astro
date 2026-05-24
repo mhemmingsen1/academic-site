@@ -8,18 +8,18 @@ import { ui } from '../i18n/ui';
 // Month names by language. English months map to their rendering in each
 // language. Add a `ja` row when adding Japanese.
 const monthNames: Record<string, Record<Lang, string>> = {
-  January:   { en: 'January',   zh: '一月' },
-  February:  { en: 'February',  zh: '二月' },
-  March:     { en: 'March',     zh: '三月' },
-  April:     { en: 'April',     zh: '四月' },
-  May:       { en: 'May',       zh: '五月' },
-  June:      { en: 'June',      zh: '六月' },
-  July:      { en: 'July',      zh: '七月' },
-  August:    { en: 'August',    zh: '八月' },
-  September: { en: 'September', zh: '九月' },
-  October:   { en: 'October',   zh: '十月' },
-  November:  { en: 'November',  zh: '十一月' },
-  December:  { en: 'December',  zh: '十二月' },
+January:   { en: 'January',   zh: '一月',     ja: '1月' },
+February:  { en: 'February',  zh: '二月',     ja: '2月' },
+March:     { en: 'March',     zh: '三月',     ja: '3月' },
+April:     { en: 'April',     zh: '四月',     ja: '4月' },
+May:       { en: 'May',       zh: '五月',     ja: '5月' },
+June:      { en: 'June',      zh: '六月',     ja: '6月' },
+July:      { en: 'July',      zh: '七月',     ja: '7月' },
+August:    { en: 'August',    zh: '八月',     ja: '8月' },
+September: { en: 'September', zh: '九月',     ja: '9月' },
+October:   { en: 'October',   zh: '十月',     ja: '10月' },
+November:  { en: 'November',  zh: '十一月',   ja: '11月' },
+December:  { en: 'December',  zh: '十二月',   ja: '12月' },
 };
 
 function fmtMonth(month: string | undefined, l: Lang): string {

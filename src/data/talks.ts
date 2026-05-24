@@ -26,7 +26,7 @@ export const talks: Talk[] = [
   {
     title: 'Beyond Consciousness: Project-Commitment and Moral Status in AI',
     event: 'SIpEIA Conference 2026: Ethics for AI',
-    institution: { en: 'Sapienza Università di Roma', zh: '羅馬大學' },
+    institution: { en: 'Sapienza Università di Roma', zh: '羅馬大學', ja: 'ローマ大学' },
     year: 2026,
     month: 'February',
     tags: ['philtech'],
@@ -34,7 +34,7 @@ export const talks: Talk[] = [
   {
     title: 'Beyond the Syntax/Semantics Gap: A Functionalist Dissolution of the Chinese Room',
     event: '(En)Active Minds and AI Workshop',
-    institution: { en: 'University of Porto', zh: '波多大學' },
+    institution: { en: 'University of Porto', zh: '波多大學', ja: 'ポルト大学' },
     year: 2025,
     month: 'September',
     tags: ['philtech'],
@@ -42,7 +42,7 @@ export const talks: Talk[] = [
   {
     title: 'AI, Relational Thinking, and the Democratization of Philosophy',
     event: 'Rethinking the Practice of Thinking in the Era of Artificial Intelligence',
-    institution: { en: 'University of Beira Interior', zh: '貝拉因特里奧爾大學' },
+    institution: { en: 'University of Beira Interior', zh: '貝拉因特里奧爾大學', ja: 'ベイラ・インテリオール大学' },
     year: 2025,
     month: 'September',
     tags: ['philtech'],
@@ -50,7 +50,7 @@ export const talks: Talk[] = [
   {
     title: 'Ecological Curation and Moral Cost: The Nature We Like',
     event: 'Green Marble 2025',
-    institution: { en: 'University of Porto', zh: '波多大學' },
+    institution: { en: 'University of Porto', zh: '波多大學', ja: 'ポルト大学' },
     year: 2025,
     month: 'September',
     tags: ['environmental'],
@@ -58,7 +58,7 @@ export const talks: Talk[] = [
   {
     title: 'Act Consequentialism and the Gamer\'s Dilemma',
     event: 'Canadian Philosophical Association Annual Meeting',
-    institution: { en: 'George Brown College', zh: '喬治布朗學院' },
+    institution: { en: 'George Brown College', zh: '喬治布朗學院', ja: 'ジョージ・ブラウン・カレッジ' },
     year: 2025,
     month: 'June',
     tags: ['philtech', 'ethics'],
@@ -66,7 +66,7 @@ export const talks: Talk[] = [
   {
     title: 'Occasional Intervention, Threshold Deontology and the Free Will Defense',
     event: 'Canadian Society for the Study of Religion Annual Meeting',
-    institution: { en: 'George Brown College', zh: '喬治布朗學院' },
+    institution: { en: 'George Brown College', zh: '喬治布朗學院', ja: 'ジョージ・ブラウン・カレッジ' },
     year: 2025,
     month: 'June',
     tags: ['religion', 'freewill'],
@@ -74,14 +74,14 @@ export const talks: Talk[] = [
   {
     title: 'Bait and Switch: Frankfurt\'s Compatibilism as Crypto-Libertarianism',
     event: 'ICIC',
-    institution: { en: 'Tunghai University', zh: '東海大學' },
+    institution: { en: 'Tunghai University', zh: '東海大學', ja: '東海大学' },
     year: 2025,
     month: 'June',
     tags: ['freewill'],
   },
   {
     title: 'Deterrence Theory: The Price of Everything, the Value of Nothing',
-    institution: { en: 'Department of Philosophy, University of Waikato', zh: '懷卡托大學哲學系' },
+    institution: { en: 'Department of Philosophy, University of Waikato', zh: '懷卡托大學哲學系', ja: 'ワイカト大学哲学科' },
     year: 2025,
     month: 'January',
     isInvited: true,
@@ -90,7 +90,7 @@ export const talks: Talk[] = [
   {
     title: 'Zhuangzi and Ideological State Apparatuses',
     event: '12th East-West Philosopher\'s Conference',
-    institution: { en: 'University of Hawaii at Mānoa', zh: '夏威夷大學馬諾阿分校' },
+    institution: { en: 'University of Hawaii at Mānoa', zh: '夏威夷大學馬諾阿分校', ja: 'ハワイ大学マノア校' },
     year: 2024,
     month: 'May',
     tags: ['sociopolitical', 'nonwestern'],
@@ -98,7 +98,7 @@ export const talks: Talk[] = [
   {
     title: 'Kongzi\'s (Business) Ethics',
     event: 'The Practice of Corporate Ethics and Social Responsibility',
-    institution: { en: 'National Sun Yat-sen University', zh: '國立中山大學' },
+    institution: { en: 'National Sun Yat-sen University', zh: '國立中山大學', ja: '国立中山大学' },
     year: 2023,
     month: 'November',
     tags: ['ethics', 'nonwestern'],
@@ -106,7 +106,7 @@ export const talks: Talk[] = [
   {
     title: 'eSports and Movement Compression',
     event: 'Ritsumeikan Center for Game Studies',
-    institution: { en: 'Nagoya Zokei University', zh: '名古屋造形大學' },
+    institution: { en: 'Nagoya Zokei University', zh: '名古屋造形大學', ja: '名古屋造形大学' },
     year: 2023,
     month: 'August',
     tags: ['philtech', 'sportgames'],
@@ -114,7 +114,7 @@ export const talks: Talk[] = [
   {
     title: 'The Ethics of Mozi',
     event: 'Doyle Seminar Series',
-    institution: { en: 'Georgetown University', zh: '喬治城大學' },
+    institution: { en: 'Georgetown University', zh: '喬治城大學', ja: 'ジョージタウン大学' },
     year: 2022,
     month: 'October',
     tags: ['ethics', 'nonwestern'],
@@ -122,7 +122,7 @@ export const talks: Talk[] = [
   {
     title: 'Mozi\'s Pantheism and Berkeley Theism: Dissolving (Or Not) the Tension between Consequentialism and Divine Command Theory',
     event: 'Institute for Advanced Studies on Asia',
-    institution: { en: 'University of Tokyo', zh: '東京大學' },
+    institution: { en: 'University of Tokyo', zh: '東京大學', ja: '東京大学' },
     year: 2019,
     month: 'December',
     isInvited: true,
@@ -131,7 +131,7 @@ export const talks: Talk[] = [
   {
     title: 'Mozi\'s Pantheism and Berkeley Theism: Dissolving (Or Not) the Tension between Consequentialism and Divine Command Theory',
     event: 'International Society of East Asian Philosophy 2019 Conference',
-    institution: { en: 'Meiji University', zh: '明治大學' },
+    institution: { en: 'Meiji University', zh: '明治大學', ja: '明治大学' },
     year: 2019,
     month: 'December',
     tags: ['ethics', 'nonwestern', 'religion'],
@@ -139,7 +139,7 @@ export const talks: Talk[] = [
   {
     title: 'Do Cheaters Never Prosper? Winning by Deception in Purely Professional Games of Pure Chance',
     event: 'Philosophy and Gambling',
-    institution: { en: 'University of Macau', zh: '澳門大學' },
+    institution: { en: 'University of Macau', zh: '澳門大學', ja: '澳門大学' },
     year: 2019,
     month: 'October',
     tags: ['sportgames'],
@@ -147,7 +147,7 @@ export const talks: Talk[] = [
   {
     title: 'Divine Utilitarianism: Consequentialist Ethics in Mozi and George Berkeley',
     event: 'Conference on Ethics, Religion & Philosophy 2019',
-    institution: { en: 'Tokyo', zh: '東京' },
+    institution: { en: 'Tokyo', zh: '東京', ja: '東京' },
     year: 2019,
     month: 'March',
     tags: ['ethics', 'nonwestern', 'religion'],
@@ -155,7 +155,7 @@ export const talks: Talk[] = [
   {
     title: 'Representing Ourselves: Ecological Truth Claims and the Ontology of Deliberation',
     event: 'New Zealand Political Science Association Conference',
-    institution: { en: 'Victoria University of Wellington', zh: '威靈頓維多利亞大學' },
+    institution: { en: 'Victoria University of Wellington', zh: '威靈頓維多利亞大學', ja: 'ウェリントン・ビクトリア大学' },
     year: 2018,
     month: 'November',
     tags: ['sociopolitical'],
@@ -163,7 +163,7 @@ export const talks: Talk[] = [
   {
     title: 'Daoist Socialism: Althusser and Zhuangzi on Ideological State Apparatuses',
     event: 'Australasian Society for Continental Philosophy Conference',
-    institution: { en: 'Western Sydney University', zh: '西雪梨大學' },
+    institution: { en: 'Western Sydney University', zh: '西雪梨大學', ja: '西シドニー大学' },
     year: 2018,
     month: 'November',
     tags: ['sociopolitical', 'nonwestern'],
@@ -171,7 +171,7 @@ export const talks: Talk[] = [
   {
     title: 'Place-Based Reasons in Non-Western Thought',
     event: '11th East-West Philosophers\' Conference: "Place"',
-    institution: { en: 'University of Hawaii at Mānoa', zh: '夏威夷大學馬諾阿分校' },
+    institution: { en: 'University of Hawaii at Mānoa', zh: '夏威夷大學馬諾阿分校', ja: 'カリフォルニア州立大学フレズノ校' },
     year: 2016,
     month: 'May',
     tags: ['sociopolitical', 'nonwestern'],
@@ -179,7 +179,7 @@ export const talks: Talk[] = [
   {
     title: 'Edmund Burke and Green Political Thought: Environmental and Social Conservatisms',
     event: 'Concerned Philosophers for Peace National Conference',
-    institution: { en: 'California State University, Fresno', zh: '加州州立大學弗雷斯諾分校' },
+    institution: { en: 'California State University, Fresno', zh: '加州州立大學弗雷斯諾分校', ja: 'グエルフ大学' },
     year: 2013,
     month: 'October',
     tags: ['sociopolitical', 'environmental'],
