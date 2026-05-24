@@ -1,0 +1,119 @@
+---
+import { publications, textbookChapters } from '../data/publications';
+import { t } from '../i18n/t';
+import type { Lang } from '../i18n/config';
+import { tagLabels, type TagKey } from '../i18n/tags';
+import { ui } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+
+const sorted = [...publications].sort((a, b) => b.year - a.year);
+
+const byYear = new Map<number, typeof publications>();
+for (const p of sorted) {
+  if (!byYear.has(p.year)) byYear.set(p.year, []);
+  byYear.get(p.year)!.push(p);
+}
+const years = Array.from(byYear.keys());
+
+// Unique tag keys across all entries, sorted by their English label so the
+// chip order is stable regardless of display language.
+const allTags = Array.from(
+  new Set(sorted.flatMap((p) => p.tags ?? []))
+).sort((a, b) => tagLabels[a].en.localeCompare(tagLabels[b].en)) as TagKey[];
+---
+
+<div>
+  <h1>{t(ui.nav.research, lang)}</h1>
+
+  {allTags.length > 0 && (
+    <div class="filter-bar" role="group" aria-label="Filter publications by topic">
+      <span class="filter-label">{t(ui.research.topic, lang)}</span>
+      <button class="filter-chip" data-tag="__all" aria-pressed="true">{t(ui.research.all, lang)}</button>
+      {allTags.map((tag) => (
+        <button class="filter-chip" data-tag={tag} aria-pressed="false">{t(tagLabels[tag], lang)}</button>
+      ))}
+    </div>
+  )}
+
+  <div class="pub-years">
+    {years.map((year) => (
+      <div class="pub-year-group" data-year={year}>
+        <div class="pub-year-label">{year}</div>
+        <ul class="entries">
+          {byYear.get(year)!.map((p) => (
+            <li class="entry" data-tags={(p.tags ?? []).join('|')}>
+              <p class="entry-title">
+                {p.link
+                  ? <a href={p.link} target="_blank" rel="noopener">{p.title}</a>
+                  : <span>{p.title}</span>}
+              </p>
+              <p class="entry-meta">
+                {p.authors && <>{p.authors} — </>}
+                <span set:html={p.venue}></span>
+              </p>
+              {p.note && <p class="entry-note" set:html={t(p.note, lang)}></p>}
+              {p.isEditedVolume && textbookChapters.length > 0 && (
+                <details class="chapter-disclosure">
+                  <summary>{t(ui.research.authoredChapters, lang)}</summary>
+                  <ul class="chapter-list">
+                    {textbookChapters.map((c) => (
+                      <li>
+                        <a href={c.link} target="_blank" rel="noopener">{c.title}</a>
+                        {c.coauthors && <span class="chapter-coauthors"> — {c.coauthors}</span>}
+                      </li>
+                    ))}
+                  </ul>
+                </details>
+              )}
+            </li>
+          ))}
+        </ul>
+      </div>
+    ))}
+  </div>
+
+  <p id="pub-empty" style="display:none; color: var(--ink-soft); font-style: italic; margin-top: 2rem;">
+    {t(ui.research.noMatch, lang)}
+  </p>
+</div>
+
+<script>
+  const chips = document.querySelectorAll<HTMLButtonElement>('.filter-chip');
+  const yearGroups = document.querySelectorAll<HTMLDivElement>('.pub-year-group');
+  const empty = document.getElementById('pub-empty');
+
+  function applyFilter(tag: string) {
+    let totalVisible = 0;
+
+    yearGroups.forEach((group) => {
+      const entries = group.querySelectorAll<HTMLLIElement>('.entry');
+      let visibleInGroup = 0;
+
+      entries.forEach((entry) => {
+        const tags = (entry.dataset.tags || '').split('|').filter(Boolean);
+        const show = tag === '__all' || tags.includes(tag);
+        entry.style.display = show ? '' : 'none';
+        if (show) {
+          visibleInGroup++;
+          totalVisible++;
+        }
+      });
+
+      group.style.display = visibleInGroup === 0 ? 'none' : '';
+    });
+
+    if (empty) empty.style.display = totalVisible === 0 ? '' : 'none';
+  }
+
+  chips.forEach((chip) => {
+    chip.addEventListener('click', () => {
+      chips.forEach((c) => c.setAttribute('aria-pressed', 'false'));
+      chip.setAttribute('aria-pressed', 'true');
+      applyFilter(chip.dataset.tag || '__all');
+    });
+  });
+</script>

@@ -690,6 +690,41 @@ a.course-title:hover {
   font-style: italic;
   margin: 0 0 1rem;
 }
+
+/* ---------- Language toggle ---------- */
+
+.lang-toggle {
+  display: flex;
+  gap: 0.75rem;
+  font-family: var(--serif-body);
+  font-size: 0.875rem;
+  font-variant: small-caps;
+  letter-spacing: 0.05em;
+}
+
+.lang-toggle a {
+  color: var(--ink-soft);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 2px;
+  transition: color 120ms ease, border-color 120ms ease;
+}
+
+.lang-toggle a:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+/* The local-script rendering of the name beside the English name */
+.name-local {
+  margin-left: 0.6rem;
+  font-style: normal;
+  font-size: 0.7em;
+  color: var(--ink-soft);
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
 /* ---------- Responsive ---------- */
 
 @media (max-width: 600px) {

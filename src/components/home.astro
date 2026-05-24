@@ -1,0 +1,95 @@
+---
+import { site } from '../data/site';
+import { t } from '../i18n/t';
+import type { Lang } from '../i18n/config';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const photoSrc = site.photo ? `${base}${site.photo}` : '';
+
+const nameLocal = site.nameLocal[lang];
+---
+
+<div class="measure">
+  <div class="home-hero">
+    <div class="home-hero-text">
+      <h1>
+        {site.name}{nameLocal && <span class="name-local">{nameLocal}</span>}
+      </h1>
+      <p>
+        {t(site.role, lang)}<br />
+        {t(site.affiliation, lang)}<br />
+        {t(site.location, lang)}
+      </p>
+      {site.involvements.length > 0 && (
+        <p class="home-involvements">
+          {site.involvements.filter(item => item.url).map((item, i, arr) => (
+            <>
+              <a href={item.url} target="_blank" rel="noopener">{t(item.label, lang)}</a>
+              {i < arr.length - 1 && <span class="sep">·</span>}
+            </>
+          ))}
+        </p>
+      )}
+    </div>
+    {site.photo && (
+      <img
+        class="home-photo"
+        src={photoSrc}
+        alt={site.photoAlt || site.name}
+        width="152"
+        height="200"
+      />
+    )}
+  </div>
+
+  {site.positionDescription.length > 0 && (
+    <section class="home-section">
+      <p>
+        {site.positionDescription.map((line, i) => (
+          <>
+            {t(line, lang)}
+            {i < site.positionDescription.length - 1 && <br />}
+          </>
+        ))}
+      </p>
+    </section>
+  )}
+
+  {site.education.length > 0 && (
+    <section class="home-section">
+      <h2>{t({ en: 'Education', zh: '學歷' }, lang)}</h2>
+      <ul class="home-list">
+        {site.education.map((e) => (
+          <li>
+            {t(e.degree, lang)}, {t(e.institution, lang)}{e.year && ` (${e.year})`}
+          </li>
+        ))}
+      </ul>
+    </section>
+  )}
+
+  <div class="home-elsewhere">
+    <a href={`mailto:${site.email}`}>{site.email}</a>
+    <span class="sep">·</span>
+    <a href={site.philpeople} target="_blank" rel="noopener">PhilPeople</a>
+    <span class="sep">·</span>
+    <a href={site.orcid} target="_blank" rel="noopener">ORCID</a>
+    {site.googleScholar && (
+      <>
+        <span class="sep">·</span>
+        <a href={site.googleScholar} target="_blank" rel="noopener">Google Scholar</a>
+      </>
+    )}
+    {site.philpapers && (
+      <>
+        <span class="sep">·</span>
+        <a href={site.philpapers} target="_blank" rel="noopener">PhilPapers</a>
+      </>
+    )}
+  </div>
+</div>

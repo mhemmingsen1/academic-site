@@ -1,167 +1,195 @@
 // Conference presentations, invited talks, and other speaking engagements.
 // Sorted chronologically (most recent first) on the page.
 //
-// Set `isInvited: true` for invited talks (keynotes, named lectures,
-// invited department talks). Renders a small "Invited" marker beside the entry.
+// `event` = the conference/series/meeting name — stays English.
+//   Optional: department/institute talks have no event, just an institution.
+// `institution` = the host venue — translatable.
+// `month` = plain English month name; translated automatically at render.
+// `tags` reference KEYS from src/i18n/tags.ts.
+// Set `isInvited: true` for invited talks.
+
+import type { Translatable } from '../i18n/t';
+import type { TagKey } from '../i18n/tags';
 
 export type Talk = {
-  title: string;
-  venue: string;
+  title: string;            // English
+  event?: string;           // English; absent for department/institute talks
+  institution: Translatable;
   year: number;
-  date?: string;
+  month?: string;           // English month name, e.g. 'June' — translated automatically
   isInvited?: boolean;
   link?: string;
-  tags?: string[];
+  tags?: TagKey[];
 };
 
 export const talks: Talk[] = [
   {
     title: 'Beyond Consciousness: Project-Commitment and Moral Status in AI',
-    venue: 'SIpEIA Conference 2026: Ethics for AI, Sapienza Università di Roma',
+    event: 'SIpEIA Conference 2026: Ethics for AI',
+    institution: { en: 'Sapienza Università di Roma', zh: '羅馬大學' },
     year: 2026,
-    date: 'February',
-    tags: ['Philosophy of Technology']
+    month: 'February',
+    tags: ['philtech'],
   },
   {
     title: 'Beyond the Syntax/Semantics Gap: A Functionalist Dissolution of the Chinese Room',
-    venue: '(En)Active Minds and AI Workshop, University of Porto',
+    event: '(En)Active Minds and AI Workshop',
+    institution: { en: 'University of Porto', zh: '波多大學' },
     year: 2025,
-    date: 'September',
-    tags: ['Philosophy of Technology']
+    month: 'September',
+    tags: ['philtech'],
   },
   {
     title: 'AI, Relational Thinking, and the Democratization of Philosophy',
-    venue: 'Rethinking the Practice of Thinking in the Era of Artificial Intelligence, University of Beira Interior',
+    event: 'Rethinking the Practice of Thinking in the Era of Artificial Intelligence',
+    institution: { en: 'University of Beira Interior', zh: '貝拉因特里奧爾大學' },
     year: 2025,
-    date: 'September',
-    tags: ['Philosophy of Technology']
+    month: 'September',
+    tags: ['philtech'],
   },
   {
     title: 'Ecological Curation and Moral Cost: The Nature We Like',
-    venue: 'Green Marble 2025, University of Porto',
+    event: 'Green Marble 2025',
+    institution: { en: 'University of Porto', zh: '波多大學' },
     year: 2025,
-    date: 'September',
-    tags: ['Environmental Philosophy']
+    month: 'September',
+    tags: ['environmental'],
   },
   {
     title: 'Act Consequentialism and the Gamer\'s Dilemma',
-    venue: 'Canadian Philosophical Association Annual Meeting, George Brown College',
+    event: 'Canadian Philosophical Association Annual Meeting',
+    institution: { en: 'George Brown College', zh: '喬治布朗學院' },
     year: 2025,
-    date: 'June',
-    tags: ['Philosophy of Technology', 'Ethics']
+    month: 'June',
+    tags: ['philtech', 'ethics'],
   },
   {
     title: 'Occasional Intervention, Threshold Deontology and the Free Will Defense',
-    venue: 'Canadian Society for the Study of Religion Annual Meeting, George Brown College',
+    event: 'Canadian Society for the Study of Religion Annual Meeting',
+    institution: { en: 'George Brown College', zh: '喬治布朗學院' },
     year: 2025,
-    date: 'June',
-    tags: ['Philosophy of Religion', 'Free Will']
+    month: 'June',
+    tags: ['religion', 'freewill'],
   },
   {
     title: 'Bait and Switch: Frankfurt\'s Compatibilism as Crypto-Libertarianism',
-    venue: 'ICIC, International College, Tunghai University',
+    event: 'ICIC',
+    institution: { en: 'Tunghai University', zh: '東海大學' },
     year: 2025,
-    date: 'June',
-    tags: ['Free Will']
+    month: 'June',
+    tags: ['freewill'],
   },
   {
     title: 'Deterrence Theory: The Price of Everything, the Value of Nothing',
-    venue: 'Department of Philosophy, University of Waikato',
+    institution: { en: 'Department of Philosophy, University of Waikato', zh: '懷卡托大學哲學系' },
     year: 2025,
-    date: 'January',
+    month: 'January',
     isInvited: true,
-    tags: ['Ethics', 'Social & Political Philosophy']
+    tags: ['ethics', 'sociopolitical'],
   },
   {
     title: 'Zhuangzi and Ideological State Apparatuses',
-    venue: '12th East-West Philosopher\'s Conference, University of Hawaii',
+    event: '12th East-West Philosopher\'s Conference',
+    institution: { en: 'University of Hawaii at Mānoa', zh: '夏威夷大學馬諾阿分校' },
     year: 2024,
-    date: 'May',
-    tags: ['Social & Political Philosophy', 'Non-Western & Comparative Philosophy']
+    month: 'May',
+    tags: ['sociopolitical', 'nonwestern'],
   },
   {
     title: 'Kongzi\'s (Business) Ethics',
-    venue: 'The Practice of Corporate Ethics and Social Responsibility, National Sun Yat-sen University',
+    event: 'The Practice of Corporate Ethics and Social Responsibility',
+    institution: { en: 'National Sun Yat-sen University', zh: '國立中山大學' },
     year: 2023,
-    date: 'November',
-    tags: ['Ethics', 'Non-Western & Comparative Philosophy']
+    month: 'November',
+    tags: ['ethics', 'nonwestern'],
   },
   {
     title: 'eSports and Movement Compression',
-    venue: 'Ritsumeikan Center for Game Studies, Nagoya Zokei University',
+    event: 'Ritsumeikan Center for Game Studies',
+    institution: { en: 'Nagoya Zokei University', zh: '名古屋造形大學' },
     year: 2023,
-    date: 'August',
-    tags: ['Philosophy of Technology', 'Philosophy of Sport & Games']
+    month: 'August',
+    tags: ['philtech', 'sportgames'],
   },
   {
     title: 'The Ethics of Mozi',
-    venue: 'Doyle Seminar Series, Georgetown University',
+    event: 'Doyle Seminar Series',
+    institution: { en: 'Georgetown University', zh: '喬治城大學' },
     year: 2022,
-    date: 'October',
-    tags: ['Ethics', 'Non-Western & Comparative Philosophy']
+    month: 'October',
+    tags: ['ethics', 'nonwestern'],
   },
   {
     title: 'Mozi\'s Pantheism and Berkeley Theism: Dissolving (Or Not) the Tension between Consequentialism and Divine Command Theory',
-    venue: 'Institute for Advanced Studies on Asia, University of Tokyo',
+    event: 'Institute for Advanced Studies on Asia',
+    institution: { en: 'University of Tokyo', zh: '東京大學' },
     year: 2019,
-    date: 'December',
+    month: 'December',
     isInvited: true,
-    tags: ['Ethics', 'Non-Western & Comparative Philosophy', 'Philosophy of Religion']
+    tags: ['ethics', 'nonwestern', 'religion'],
   },
   {
     title: 'Mozi\'s Pantheism and Berkeley Theism: Dissolving (Or Not) the Tension between Consequentialism and Divine Command Theory',
-    venue: 'International Society of East Asian Philosophy 2019 Conference, Meiji University',
+    event: 'International Society of East Asian Philosophy 2019 Conference',
+    institution: { en: 'Meiji University', zh: '明治大學' },
     year: 2019,
-    date: 'December',
-    tags: ['Ethics', 'Non-Western & Comparative Philosophy', 'Philosophy of Religion']
+    month: 'December',
+    tags: ['ethics', 'nonwestern', 'religion'],
   },
   {
     title: 'Do Cheaters Never Prosper? Winning by Deception in Purely Professional Games of Pure Chance',
-    venue: 'Philosophy and Gambling, University of Macau',
+    event: 'Philosophy and Gambling',
+    institution: { en: 'University of Macau', zh: '澳門大學' },
     year: 2019,
-    date: 'October',
-    tags: ['Philosophy of Sport & Games']
+    month: 'October',
+    tags: ['sportgames'],
   },
   {
     title: 'Divine Utilitarianism: Consequentialist Ethics in Mozi and George Berkeley',
-    venue: 'Conference on Ethics, Religion & Philosophy 2019, Tokyo',
+    event: 'Conference on Ethics, Religion & Philosophy 2019',
+    institution: { en: 'Tokyo', zh: '東京' },
     year: 2019,
-    date: 'March',
-    tags: ['Ethics', 'Non-Western & Comparative Philosophy', 'Philosophy of Religion']
+    month: 'March',
+    tags: ['ethics', 'nonwestern', 'religion'],
   },
   {
     title: 'Representing Ourselves: Ecological Truth Claims and the Ontology of Deliberation',
-    venue: 'New Zealand Political Science Association Conference, Victoria University of Wellington',
+    event: 'New Zealand Political Science Association Conference',
+    institution: { en: 'Victoria University of Wellington', zh: '威靈頓維多利亞大學' },
     year: 2018,
-    date: 'November',
-    tags: ['Social & Political Philosophy']
+    month: 'November',
+    tags: ['sociopolitical'],
   },
   {
     title: 'Daoist Socialism: Althusser and Zhuangzi on Ideological State Apparatuses',
-    venue: 'Australasian Society for Continental Philosophy Conference, Western Sydney University',
+    event: 'Australasian Society for Continental Philosophy Conference',
+    institution: { en: 'Western Sydney University', zh: '西雪梨大學' },
     year: 2018,
-    date: 'November',
-    tags: ['Social & Political Philosophy', 'Non-Western & Comparative Philosophy']
+    month: 'November',
+    tags: ['sociopolitical', 'nonwestern'],
   },
   {
     title: 'Place-Based Reasons in Non-Western Thought',
-    venue: '11th East-West Philosophers\' Conference: "Place", University of Hawaii',
+    event: '11th East-West Philosophers\' Conference: "Place"',
+    institution: { en: 'University of Hawaii at Mānoa', zh: '夏威夷大學馬諾阿分校' },
     year: 2016,
-    date: 'May',
-    tags: ['Social & Political Philosophy', 'Non-Western & Comparative Philosophy']
+    month: 'May',
+    tags: ['sociopolitical', 'nonwestern'],
   },
   {
     title: 'Edmund Burke and Green Political Thought: Environmental and Social Conservatisms',
-    venue: 'Concerned Philosophers for Peace National Conference, California State University, Fresno',
+    event: 'Concerned Philosophers for Peace National Conference',
+    institution: { en: 'California State University, Fresno', zh: '加州州立大學弗雷斯諾分校' },
     year: 2013,
-    date: 'October',
-    tags: ['Social & Political Philosophy', 'Environmental Philosophy']
+    month: 'October',
+    tags: ['sociopolitical', 'environmental'],
   },
   {
     title: 'The Tensions of Cosmopolitan Theory: An Examination of Martha Nussbaum, Judith Butler, and Jonathan Rée',
-    venue: 'Politics at the Limits of Civil Society, University of Guelph',
+    event: 'Politics at the Limits of Civil Society',
+    institution: { en: 'University of Guelph', zh: '圭爾夫大學' },
     year: 2013,
-    date: 'September',
-    tags: ['Social & Political Philosophy']
+    month: 'September',
+    tags: ['sociopolitical'],
   },
 ];

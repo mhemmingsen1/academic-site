@@ -1,0 +1,125 @@
+---
+import { talks } from '../data/talks';
+import { t } from '../i18n/t';
+import type { Lang } from '../i18n/config';
+import { tagLabels, type TagKey } from '../i18n/tags';
+import { ui } from '../i18n/ui';
+
+// Month names by language. English months map to their rendering in each
+// language. Add a `ja` row when adding Japanese.
+const monthNames: Record<string, Record<Lang, string>> = {
+  January:   { en: 'January',   zh: '一月' },
+  February:  { en: 'February',  zh: '二月' },
+  March:     { en: 'March',     zh: '三月' },
+  April:     { en: 'April',     zh: '四月' },
+  May:       { en: 'May',       zh: '五月' },
+  June:      { en: 'June',      zh: '六月' },
+  July:      { en: 'July',      zh: '七月' },
+  August:    { en: 'August',    zh: '八月' },
+  September: { en: 'September', zh: '九月' },
+  October:   { en: 'October',   zh: '十月' },
+  November:  { en: 'November',  zh: '十一月' },
+  December:  { en: 'December',  zh: '十二月' },
+};
+
+function fmtMonth(month: string | undefined, l: Lang): string {
+  if (!month) return '';
+  return monthNames[month]?.[l] ?? month;   // fall back to the raw string
+}
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+
+const sorted = [...talks].sort((a, b) => b.year - a.year);
+
+const byYear = new Map<number, typeof talks>();
+for (const tk of sorted) {
+  if (!byYear.has(tk.year)) byYear.set(tk.year, []);
+  byYear.get(tk.year)!.push(tk);
+}
+const years = Array.from(byYear.keys());
+
+const allTags = Array.from(
+  new Set(sorted.flatMap((tk) => tk.tags ?? []))
+).sort((a, b) => tagLabels[a].en.localeCompare(tagLabels[b].en)) as TagKey[];
+---
+
+<div>
+  <h1>{t(ui.nav.talks, lang)}</h1>
+
+  {allTags.length > 0 && (
+    <div class="filter-bar" role="group" aria-label="Filter talks by topic">
+      <span class="filter-label">{t(ui.talks.topic, lang)}</span>
+      <button class="filter-chip" data-tag="__all" aria-pressed="true">{t(ui.talks.all, lang)}</button>
+      {allTags.map((tag) => (
+        <button class="filter-chip" data-tag={tag} aria-pressed="false">{t(tagLabels[tag], lang)}</button>
+      ))}
+    </div>
+  )}
+
+  <div class="pub-years">
+    {years.map((year) => (
+      <div class="pub-year-group" data-year={year}>
+        <div class="pub-year-label">{year}</div>
+        <ul class="entries">
+          {byYear.get(year)!.map((tk) => (
+            <li class="entry" data-tags={(tk.tags ?? []).join('|')}>
+              <p class="entry-title">
+                {tk.link
+                  ? <a href={tk.link} target="_blank" rel="noopener">{tk.title}</a>
+                  : <span>{tk.title}</span>}
+                {tk.isInvited && <span class="talk-invited">{t(ui.talks.invited, lang)}</span>}
+              </p>
+              <p class="entry-meta">
+                {tk.event && <>{tk.event}, </>}{t(tk.institution, lang)}{tk.month && <>, {fmtMonth(tk.month, lang)}</>}
+              </p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    ))}
+  </div>
+
+  <p id="talk-empty" style="display:none; color: var(--ink-soft); font-style: italic; margin-top: 2rem;">
+    {t(ui.talks.noMatch, lang)}
+  </p>
+</div>
+
+<script>
+  const chips = document.querySelectorAll<HTMLButtonElement>('.filter-chip');
+  const yearGroups = document.querySelectorAll<HTMLDivElement>('.pub-year-group');
+  const empty = document.getElementById('talk-empty');
+
+  function applyFilter(tag: string) {
+    let totalVisible = 0;
+
+    yearGroups.forEach((group) => {
+      const entries = group.querySelectorAll<HTMLLIElement>('.entry');
+      let visibleInGroup = 0;
+
+      entries.forEach((entry) => {
+        const tags = (entry.dataset.tags || '').split('|').filter(Boolean);
+        const show = tag === '__all' || tags.includes(tag);
+        entry.style.display = show ? '' : 'none';
+        if (show) {
+          visibleInGroup++;
+          totalVisible++;
+        }
+      });
+
+      group.style.display = visibleInGroup === 0 ? 'none' : '';
+    });
+
+    if (empty) empty.style.display = totalVisible === 0 ? '' : 'none';
+  }
+
+  chips.forEach((chip) => {
+    chip.addEventListener('click', () => {
+      chips.forEach((c) => c.setAttribute('aria-pressed', 'false'));
+      chip.setAttribute('aria-pressed', 'true');
+      applyFilter(chip.dataset.tag || '__all');
+    });
+  });
+</script>

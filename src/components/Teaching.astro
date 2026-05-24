@@ -1,0 +1,99 @@
+---
+import { courses, pedagogy } from '../data/teaching';
+import { t } from '../i18n/t';
+import type { Lang } from '../i18n/config';
+import { tagLabels, type TagKey } from '../i18n/tags';
+import { ui } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+
+const allTags = Array.from(
+  new Set(courses.flatMap((c) => c.tags ?? []))
+).sort((a, b) => tagLabels[a].en.localeCompare(tagLabels[b].en)) as TagKey[];
+---
+
+<div>
+  {pedagogy.length > 0 && (
+    <section class="pedagogy-section">
+      <h2>{t(ui.teaching.pedagogyHeading, lang)}</h2>
+      <ul class="entries">
+        {pedagogy.map((p) => (
+          <li class="entry">
+            <details class="pedagogy-disclosure">
+              <summary>
+                <span class="pedagogy-title">{t(p.title, lang)}</span>
+              </summary>
+              <p class="pedagogy-desc" set:html={t(p.description, lang)}></p>
+              {p.link && (() => {
+                const href = t(p.link, lang);
+                return (
+                  <p class="pedagogy-link-row">
+                    <a class="pedagogy-link" href={href} target="_blank" rel="noopener">{t(ui.teaching.viewAssignment, lang)}</a>
+                  </p>
+                );
+              })()}
+            </details>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )}
+
+  <section class="courses-section">
+    <h2>{t(ui.teaching.coursesHeading, lang)}</h2>
+    <p class="courses-note">{t(ui.teaching.syllabiNote, lang)}</p>
+
+    {allTags.length > 0 && (
+      <div class="filter-bar" role="group" aria-label="Filter courses by topic">
+        <span class="filter-label">{t(ui.teaching.topic, lang)}</span>
+        <button class="filter-chip" data-tag="__all" aria-pressed="true">{t(ui.teaching.all, lang)}</button>
+        {allTags.map((tag) => (
+          <button class="filter-chip" data-tag={tag} aria-pressed="false">{t(tagLabels[tag], lang)}</button>
+        ))}
+      </div>
+    )}
+
+    <ul class="course-list" id="course-list">
+      {courses.map((c) => (
+        <li class="course" data-tags={(c.tags ?? []).join('|')}>
+          {c.syllabus
+            ? <a class="course-title" href={c.syllabus} target="_blank" rel="noopener">{c.title}</a>
+            : <span class="course-title">{c.title}</span>}
+          {c.description && <> — <span class="course-desc">{t(c.description, lang)}</span></>}
+        </li>
+      ))}
+    </ul>
+
+    <p id="course-empty" style="display:none; color: var(--ink-soft); font-style: italic; margin-top: 2rem;">
+      {t(ui.teaching.noMatch, lang)}
+    </p>
+  </section>
+</div>
+
+<script>
+  const chips = document.querySelectorAll<HTMLButtonElement>('.filter-chip');
+  const courseItems = document.querySelectorAll<HTMLLIElement>('#course-list .course');
+  const empty = document.getElementById('course-empty');
+
+  function applyFilter(tag: string) {
+    let visible = 0;
+    courseItems.forEach((item) => {
+      const tags = (item.dataset.tags || '').split('|').filter(Boolean);
+      const show = tag === '__all' || tags.includes(tag);
+      item.style.display = show ? '' : 'none';
+      if (show) visible++;
+    });
+    if (empty) empty.style.display = visible === 0 ? '' : 'none';
+  }
+
+  chips.forEach((chip) => {
+    chip.addEventListener('click', () => {
+      chips.forEach((c) => c.setAttribute('aria-pressed', 'false'));
+      chip.setAttribute('aria-pressed', 'true');
+      applyFilter(chip.dataset.tag || '__all');
+    });
+  });
+</script>

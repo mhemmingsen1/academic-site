@@ -1,0 +1,44 @@
+---
+import { grants } from '../data/grants';
+import { t } from '../i18n/t';
+import type { Lang } from '../i18n/config';
+import { ui } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+
+function fmtDate(d: string, l: Lang): string {
+  const [y, m] = d.split('-');
+  const month = parseInt(m, 10);
+  if (l === 'zh') {
+    return `${y}年${month}月`;
+  }
+  const months = ['', 'Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  return `${months[month] || ''} ${y}`.trim();
+}
+
+const sorted = [...grants].sort((a, b) => b.startDate.localeCompare(a.startDate));
+---
+
+<div>
+  <h1>{t(ui.nav.grants, lang)}</h1>
+
+  <ul class="entries">
+    {sorted.map((g) => (
+      <li class="entry">
+        <p class="entry-title">
+          {g.link
+            ? <a href={g.link} target="_blank" rel="noopener">{t(g.title, lang)}</a>
+            : <span>{t(g.title, lang)}</span>}
+        </p>
+        <p class="entry-meta">
+          {t(g.funder, lang)} — {t(g.role, lang)}, {fmtDate(g.startDate, lang)}&ndash;{fmtDate(g.endDate, lang)}
+          {g.amount && <> · {g.amount}</>}
+        </p>
+        <p class="entry-desc">{t(g.description, lang)}</p>
+      </li>
+    ))}
+  </ul>
+</div>

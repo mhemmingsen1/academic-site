@@ -1,21 +1,43 @@
 ---
 import '../styles/global.css';
 import { site } from '../data/site';
+import { t } from '../i18n/t';
+import { type Lang, langNames, langPrefix, languages } from '../i18n/config';
+import { ui } from '../i18n/ui';
+
+type PageKey = 'home' | 'research' | 'talks' | 'grants' | 'teaching';
 
 interface Props {
+  lang: Lang;
+  pageKey: PageKey;
   title: string;
   description?: string;
-  /** Used to highlight the active nav item. One of: 'home' | 'research' | 'grants' | 'teaching' */
-  current?: 'home' | 'research' | 'talks' | 'grants' | 'teaching';
+  /** Highlights the active nav item. Same as pageKey. */
+  current?: PageKey;
 }
 
-const { title, description, current } = Astro.props;
+const { lang, pageKey, title, description, current = pageKey } = Astro.props;
 const fullTitle = title === site.name ? site.name : `${title} — ${site.name}`;
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+// Build a path for a given page in a given language.
+//   home, en  → /            research, en → /research/
+//   home, zh  → /zh/         research, zh → /zh/research/
+function pagePath(key: PageKey, l: Lang): string {
+  const prefix = langPrefix(l);            // '' for en, 'zh' for zh
+  const langSeg = prefix ? `/${prefix}` : '';
+  const pageSeg = key === 'home' ? '' : `/${key}`;
+  const path = `${base}${langSeg}${pageSeg}/`;
+  // collapse any accidental double slashes, keep it tidy
+  return path.replace(/\/{2,}/g, '/');
+}
+
+// The languages to offer in the toggle: every language except the current one.
+const otherLangs = languages.filter((l) => l !== lang);
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -53,12 +75,18 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       <header class="site-header">
         <div class="site-header-inner">
           <nav class="site-nav" aria-label="Primary">
-  <a href={`${base}/`}                 aria-current={current === 'home'     ? 'page' : undefined}>Home</a>
-  <a href={`${base}/research/`}        aria-current={current === 'research' ? 'page' : undefined}>Research</a>
-  <a href={`${base}/talks/`}           aria-current={current === 'talks'    ? 'page' : undefined}>Talks</a>
-  <a href={`${base}/grants/`}          aria-current={current === 'grants'   ? 'page' : undefined}>Grants</a>
-  <a href={`${base}/teaching/`}        aria-current={current === 'teaching' ? 'page' : undefined}>Teaching</a>
-</nav>
+            <a href={pagePath('home', lang)}     aria-current={current === 'home'     ? 'page' : undefined}>{t(ui.nav.home, lang)}</a>
+            <a href={pagePath('research', lang)}  aria-current={current === 'research' ? 'page' : undefined}>{t(ui.nav.research, lang)}</a>
+            <a href={pagePath('talks', lang)}     aria-current={current === 'talks'    ? 'page' : undefined}>{t(ui.nav.talks, lang)}</a>
+            <a href={pagePath('grants', lang)}    aria-current={current === 'grants'   ? 'page' : undefined}>{t(ui.nav.grants, lang)}</a>
+            <a href={pagePath('teaching', lang)}  aria-current={current === 'teaching' ? 'page' : undefined}>{t(ui.nav.teaching, lang)}</a>
+          </nav>
+
+          <div class="lang-toggle">
+            {otherLangs.map((l) => (
+              <a href={pagePath(pageKey, l)} hreflang={l}>{langNames[l]}</a>
+            ))}
+          </div>
         </div>
       </header>
 

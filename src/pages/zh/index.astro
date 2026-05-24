@@ -1,0 +1,12 @@
+---
+import Base from '../../layouts/Base.astro';
+import Home from '../../components/Home.astro';
+import { site } from '../../data/site';
+import { t } from '../../i18n/t';
+---
+
+<Base lang="zh" current="home" pageKey="home"
+      title={site.name}
+      description={`${site.name} — ${t(site.role, 'zh')}, ${t(site.affiliation, 'zh')}.`}>
+  <Home lang="zh" />
+</Base>
