@@ -505,7 +505,7 @@ export const pedagogy: Pedagogy[] = [
     },
     link: {
       en: '/pedagogy/Close-Reading-Presentations.pdf',
-      zh: '',
+      zh: '/pedagogy/zh/Close-Reading-Presentations.pdf',
     },
   },
   {
@@ -521,7 +521,8 @@ export const pedagogy: Pedagogy[] = [
     },
     link: {
       en: '/pedagogy/Scaffolded-Response-Papers.pdf',
-      zh: '',
+      zh: '/pedagogy/zh/Scaffolded-Response-Papers.pdf',
+      ja: '/pedagogy/ja/Scaffolded-Response-Papers.pdf',
     },
   },
   {
@@ -537,7 +538,8 @@ export const pedagogy: Pedagogy[] = [
     },
     link: {
       en: '/pedagogy/Letters.pdf',
-      zh: '',
+      zh: '/pedagogy/zh/Letters.pdf',
+      ja: '/pedagogy/ja/Letters.pdf',
     },
   },
   {
@@ -553,7 +555,8 @@ export const pedagogy: Pedagogy[] = [
     },
     link: {
       en: '/pedagogy/Questions-Assignment.pdf',
-      zh: '',
+      zh: '/pedagogy/zh/Questions-Assignment.pdf',
+      ja: '/pedagogy/ja/Questions-Assignment.pdf',
     },
   },
   {
