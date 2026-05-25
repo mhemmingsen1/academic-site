@@ -352,7 +352,8 @@ export const pedagogy: Pedagogy[] = [
     },
     link: {
       en: '/pedagogy/Philosophical-Diary.pdf',
-      zh: '',
+      zh: '/pedagogy/zh/Philosophical-Diary.pdf',
+      ja: '/pedagogy/ja/Philosophical-Diary.pdf',
     },
   },
   {
@@ -368,7 +369,8 @@ export const pedagogy: Pedagogy[] = [
     },
     link: {
       en: '/pedagogy/Class-Discussions.pdf',
-      zh: '',
+      zh: '/pedagogy/zh/Class-Discussions.pdf',
+      ja: '/pedagogy/ja/Class-Discussions.pdf',
     },
   },
   {
@@ -384,7 +386,8 @@ export const pedagogy: Pedagogy[] = [
     },
     link: {
       en: '/pedagogy/Philosophy-in-the-Wild.pdf',
-      zh: '',
+      zh: '/pedagogy/zh/Philosophy-in-the-Wild.pdf',
+      ja: '/pedagogy/ja/Philosophy-in-the-Wild.pdf',
     },
   },
   {
@@ -400,7 +403,8 @@ export const pedagogy: Pedagogy[] = [
     },
     link: {
       en: '/pedagogy/Discussion-Revision.pdf',
-      zh: '',
+      zh: '/pedagogy/zh/Discussion-Revision.pdf',
+      ja: '/pedagogy/ja/Discussion-Revision.pdf',
     },
   },
   {
@@ -416,7 +420,8 @@ export const pedagogy: Pedagogy[] = [
     },
     link: {
       en: '/pedagogy/Living-the-Theory.pdf',
-      zh: '',
+      zh: '/pedagogy/zh/Living-the-Theory.pdf',
+      ja: '/pedagogy/ja/Living-the-Theory.pdf',
     },
   },
   {
@@ -432,7 +437,8 @@ export const pedagogy: Pedagogy[] = [
     },
     link: {
       en: '/pedagogy/Question-Improvement.pdf',
-      zh: '',
+      zh: '/pedagogy/zh/Question-Improvement.pdf',
+      ja: '/pedagogy/ja/Question-Improvement.pdf',
     },
   },
   {
@@ -448,7 +454,8 @@ export const pedagogy: Pedagogy[] = [
     },
     link: {
       en: '/pedagogy/AI-Mediated-Reading-Response.pdf',
-      zh: '',
+      zh: '/pedagogy/zh/AI-Mediated-Reading-Response.pdf',
+      ja: '/pedagogy/ja/AI-Mediated-Reading-Response.pdf',
     },
   },
   {
@@ -464,7 +471,8 @@ export const pedagogy: Pedagogy[] = [
     },
     link: {
       en: '/pedagogy/Bridge-Notes.pdf',
-      zh: '',
+      zh: '/pedagogy/zh/Bridge-Notes.pdf',
+      ja: '/pedagogy/ja/Bridge-Notes.pdf',
     },
   },
   {
@@ -480,7 +488,8 @@ export const pedagogy: Pedagogy[] = [
     },
     link: {
       en: '/pedagogy/Debates.pdf',
-      zh: '',
+      zh: '/pedagogy/zh/Debates.pdf',
+      ja: '/pedagogy/ja/Debates.pdf',
     },
   },
   {
