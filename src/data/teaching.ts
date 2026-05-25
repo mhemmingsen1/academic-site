@@ -572,7 +572,8 @@ export const pedagogy: Pedagogy[] = [
     },
     link: {
       en: '/pedagogy/Essay-Introduction.pdf',
-      zh: '',
+      zh: '/pedagogy/zh/Essay-Introduction.pdf',
+      ja: '/pedagogy/ja/Essay-Introduction.pdf',
     },
   },
   {
