@@ -65,7 +65,7 @@ export const site = {
   // Involvements: the label is translatable, the URL is not.
   involvements: [
     { label: { en: 'Tunghai Honors Program', zh: '東海大學榮譽學程', ja: '東海オナーズプログラム' }, url: 'https://honors.thu.edu.tw/' },
-    { label: { en: 'ICIC 2026', zh: 'ICIC 2026' }, url: 'https://icic.thu.edu.tw/', ja: 'ICIC 2026' },
+    { label: { en: 'ICIC 2026', zh: 'ICIC 2026', ja: 'ICIC 2026' }, url: 'https://icic.thu.edu.tw/'},
   ] as Involvement[],
 
   // Photo — not translated.
@@ -73,5 +73,5 @@ export const site = {
   photoAlt: 'Portrait of Michael Hemmingsen',
 
   // Google Analytics 4 Measurement ID (format: G-XXXXXXXXXX). Empty = disabled.
-  gaMeasurementId: '',
+  gaMeasurementId: 'G-PFQG4P547B',
 };
