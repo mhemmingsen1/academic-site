@@ -589,7 +589,8 @@ export const pedagogy: Pedagogy[] = [
     },
     link: {
       en: '/pedagogy/Spotlight-and-Shadow.pdf',
-      zh: '',
+      zh: '/pedagogy/zh/Spotlight-and-Shadow.pdf',
+      ja: '/pedagogy/ja/Spotlight-and-Shadow.pdf',
     },
   },
 ];
