@@ -24,6 +24,22 @@ export type Talk = {
 
 export const talks: Talk[] = [
   {
+    title: 'What Makes a Sport a Sport? On Folk Intuitions about Rules and Movement in Sport',
+    event: 'Australasian Association of Philosophy Annual Conference',
+    institution: { en: 'University of Waikato', zh: '懷卡託大學', ja: 'ワイカト大学' },
+    year: 2026,
+    month: 'July',
+    tags: ['sportgames'],
+  }, 
+  {
+    title: 'The Sports Model and the Deliberative Model: Competition in Philosophy Pedagogy',
+    event: 'Dialogue in Democratic Education',
+    institution: { en: 'University of Oulu', zh: '奧盧大學', ja: 'オウル大学' },
+    year: 2026,
+    month: 'June',
+    tags: ['ethics', 'sportgames', 'sociopolitical'],
+  },
+   {
     title: 'Beyond Consciousness: Project-Commitment and Moral Status in AI',
     event: 'SIpEIA Conference 2026: Ethics for AI',
     institution: { en: 'Sapienza Università di Roma', zh: '羅馬大學', ja: 'ローマ大学' },
