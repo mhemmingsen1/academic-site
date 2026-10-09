@@ -22,7 +22,7 @@ export const publications: Publication[] = [
   // 2026
   {
     title: 'Souls Ex Machina: The Theological Necessity of AI Ensoulment',
-    venue: 'In <em>Virtue Theory and Video Games</em>, edited by Nicholas Baima and Sarah Malanowski',
+    venue: 'Philosophia Reformata',
     year: 2026,
     link: 'https://philpapers.org/rec/HEMSEM',
     tags: ['philtech', 'religion'],
